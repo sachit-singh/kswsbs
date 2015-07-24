@@ -171,39 +171,78 @@
 
 				<section>
 					<h3>how we write unit tests</h3>
-						<section data-markdown>
+					<section data-markdown>
 
-							class exampleClass
-							{
-								public function __construct(Dependency1, dependency 2, ...)
-								{
-									$this->dependency1 = $dependancy1;
-								}
-							}
-						</section>
-						<section data-markdown>
+					<script type="text/template">
+					```php
+					class ExampleClass
+					{
+						public function __construct(Dependency1 $dependency1)
+						{
+							$this->dependency1 = $dependancy1;
+						}
 
-								use \Mockery as m;
-								class exampleTest
-								{
-									public function setup()
-									{
-										parent::setUp();
-										$dependency1 = m::mock('dependency 1');
-									}
+						public function add($a, $b)
+						{
+							return $this->dependency1->add($a + $b);
+						}
+					}
+					```
+					</script>
+					</section>
 
-									public function tearDown()
-									{
-										parent::tearDown();
-										m::close();
-									}
-								}
+					<section data-markdown>
+					<script type="text/template">
+					```php
+					use \Mockery as m;
+
+					class exampleTest
+					{
+						public function setup()
+						{
+
+							parent::setUp();
+
+							$this->dependency1 = m::mock('dependency 1');
+
+							$this->exampleClass = new ExampleClass($this->dependency1);
+
+						}
+
+						public function testItShouldAddTwoNumbers()
+						{
+							$this->dependency1->shouldReceive(add)->once()->with(1, 2)->andReturn(3);
+							$this->assertEquals(3, $this->exampleClass(1, 2));
+						}
+
+						public function tearDown()
+						{
+							parent::tearDown();
+							m::close();
+						}
+					}
+
+					```
+					</script>
+
 					</section>
 				</section>
 
 			 	<section>
 			 		<h3>the missing piece</h3>
 			 		<p class="fragment">Continuous Integration</p>
+			 		<p class="fragment">
+			 			a development practice that requires developers to integrate code several times a day
+		 			</p>
+		 			<p class="fragment">
+	 					each push is then verified by an automated build
+		 			</p>
+		 			<p class="fragment">
+		 				allowing teams to detect problems early
+		 			</p>
+		 			<p class="fragment">
+		 				the goal is to provide rapid feedback incase a defect is introduced
+		 			</p>
 			 	</section>
 
 			 	<section>
