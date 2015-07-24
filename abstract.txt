@@ -3,7 +3,7 @@ Automated tests with phpunit is a puzzle, CI is the missing piece.
 Automated unit test simply put is code testing another piece of code. Unit testing focuses on testing a small independent working part of the code which is generally a method/function. Unit tests need to be fast, offline, not dependent on database and test only one thing. Mocking other dependencies is a great way to unit test the class to be tested. To a beginner understand this is as difficult as solving a puzzle.
 
 In this talk I will reveal how we wrote "unit" tests for a Laravel web application using PHPUnit and Mockery for mocking dependencies. I will also share why we chose PHPunit and Mockery and how testing helped up build better software.
->
-> With Continuous Integration, at every push, all the tests are run that covers the code changes. Continuous Integration helps us know where the project is at all times. What works, what doesn't and all the bugs you have in your system from a unit perspective with a fast feedback loop. If your change broke something existing you know it in minutes then you can fix your code and add more tests for the part you did.
+
+With Continuous Integration, at every push, all the tests are run that covers the code changes. Continuous Integration helps us know where the project is at all times. What works, what doesn't and all the bugs you have in your system from a unit perspective with a fast feedback loop. If your change broke something existing you know it in minutes then you can fix your code and add more tests for the part you did.
 
 Moreover continuous integration is a mentality to keep software quality high with having the build green for main branch in VCS all the time. CI goes like hand in glove with the issue flow and simplified gitflow that we follow. I will talk about how we integrated our automated tests with Shippable and the benefits of CI.

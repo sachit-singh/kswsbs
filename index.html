@@ -95,7 +95,7 @@
 					</section>
 				</section>
 
-				<section id="fragments">
+				<section>
 					<h3>Why unit tests ?</h3>
 					<p class="fragment">find problems early in the dev cycle</p>
 					<p class="fragment">they facilitate change</p>
@@ -103,7 +103,7 @@
 					<p class="fragment">its fun..</p>
 				</section>
 
-				<section id="fragments">
+				<section>
 					<h3>how do we write unit tests?</h3>
 						<p class="fragment">
 							setup everything for testing
@@ -115,19 +115,18 @@
 							trigger the method being tested
 						</p>
 						<p class="fragment">
-								verify the results, that they are correct
+							verify the results, that they are correct
 						</p>
 				</section>
 
-
-				<section id="fragment">
+				<section>
 					<h3>how to write good unit tests..??</h3>
 					<p class="fragment fade-in">structure is important</p>
-					<p class="fragment fade-in">write testable code</p>
 					<p class="fragment fade-in">consistent naming</p>
-					<p class="fragment fade-in">write readable tests</p>
 					<p class="fragment fade-in">mock everything (obviously not the class being tested)</p>
 					<p class="fragment fade-in">and write code that can be mocked</p>
+					<p class="fragment fade-in">testable code</p>
+					<p class="fragment fade-in">readable tests</p>
 				</section>
 
 				<section>
@@ -146,7 +145,13 @@
 
 				<section>
 					<p>being the most popular and the de facto unit testing framework in PHP</p>
-					<h4>we chose phpunit</h4>
+					<p>
+						<img src="images/testStats.png">
+					</p>
+				</section>
+
+				<section>
+					<h4 class="fragment">we chose phpunit</h4>
 				</section>
 
 				<section>
@@ -205,7 +210,7 @@
 						public function testItShouldAddTwoNumbers()
 						{
 							$this->dependency1->shouldReceive(add)->once()->with(1, 2)->andReturn(3);
-							$this->assertEquals(3, $this->exampleClass(1, 2));
+							$this->assertEquals(3, $this->exampleClass->add(1, 2));
 						}
 
 						public function tearDown()
@@ -223,6 +228,8 @@
 			 	<section>
 			 		<h3>the missing piece</h3>
 			 		<p class="fragment">Continuous Integration</p>
+			 		<br/>
+			 		<br/>
 			 		<p class="fragment">
 			 			a development practice that requires developers to integrate code several times a day
 		 			</p>
@@ -239,11 +246,21 @@
 
 			 	<section>
 			 		<h4>lot of services</h4>
-			 		<p class="fragment"> travis CI</p>
-			 		<p class="fragment"> shippable CI</p>
-			 		<p class="fragment"> circle CI</p>
-			 		<p class="fragment"> codeshipt CI</p>
-			 		<p class="fragment"> semaphore CI</p>
+			 		<p class="fragment">
+			 			<img class="logos" src="images/CIservices/travisCI.png">
+			 		</p>
+			 		<p class="fragment">
+			 			<img class="logos" src="images/CIservices/shippableCI.png">
+			 		</p>
+			 		<p class="fragment">
+			 			<img class="logos" src="images/CIservices/circleCI.png">
+			 		</p>
+			 		<p class="fragment">
+			 			<img class="logos" src="images/CIservices/codeShipCI.png">
+			 		</p>
+			 		<p class="fragment">
+			 			<img class="logos" src="images/CIservices/semaphoreCI.png">
+			 		</p>
 			 	</section>
 
 			 	<section>
@@ -252,6 +269,55 @@
 			 		<p class="fragment">supports docker</p>
 			 		<p class="fragment">has unlimited builds</p>
 			 		<p class="fragment">a lot of other good features</p>
+			 	</section>
+
+			 	<section>
+			 		<h4>What does it do?</h4>
+			 		<p class="fragment">
+			 			runs a build everytime you anything
+			 		</p>
+			 		<p class="fragment">
+			 			sends you an email to notify the success/failure of the build
+			 			<img src="images/shippableEmail.png">
+			 		</p>
+			 	</section>
+
+			 	<section>
+			 		<p>you can even set it to notify you on hipchat</p>
+			 		<img src="images/hipchatNotification.png">
+			 	</section>
+
+			 	<section>
+			 		<h4>to do it</h4>
+			 		<strong><p class="fragment">shippable.yml</p></strong>
+			 		<p class="fragment"> - set a couple of configurations</p>
+			 		<p class="fragment"> - choose what to do and when</p>
+			 	</section>
+
+			 	<section>
+			 		<img src="images/shippableYML.png">
+			 	</section>
+
+			 	<section>
+			 		<p>a Question..</p>
+			 		<p class="fragment">
+				 		how are testing and something like titaura related?
+			 		</p>
+			 		<p class="fragment">
+				 		<img src="images/titaura.jpg" style="width: 50%; height: 50%;">
+			 		</p>
+			 	</section>
+
+			 	<section>
+			 		<p class="fragment">your push turns out red...</p>
+			 		<p class="fragment">you go and buy titaura</p>
+			 	</section>
+
+			 	<section>
+			 		<h4>culture</h4>
+			 		<p class="fragment">
+			 			<img src="images/automatedTests.png">
+			 		</p>
 			 	</section>
 
 			 	<section>
