@@ -69,7 +69,7 @@
 				</section>
 
 				<section>
-					<h3>Types of tests</h3>
+					<h3>Types of tests - mainly</h3>
 					<section id="fragments">
 						<p class="fragment">
 							 Unit Tests <br/>
@@ -80,15 +80,6 @@
 						<p class="fragment">
 							 Integration Tests <br/>
 	 					</p>
-						<p class="fragment">
-							 Black box Tests <br/>
-	 					</p>
-						<p class="fragment">
-							 White box Tests <br/>
-						</p>
-						<p class="fragment">
-							 etc.. <br/>
-						</p>
 					</section>
 				</section>
 
@@ -96,10 +87,11 @@
 					<h3>Unit Tests</h3>
 					<section id="fragments">
 						<p class="fragment">testing a small independent part of code </p>
-						<p class="fragment">need to fast</p>
 						<p class="fragment">database independent</p>
+						<p class="fragment">minimal or no file system dependence</p>
 						<p class="fragment">isolated</p>
 						<p class="fragment">deterministic</p>
+						<p class="fragment">so it is fast</p>
 					</section>
 				</section>
 
@@ -134,7 +126,7 @@
 					<p class="fragment fade-in">write testable code</p>
 					<p class="fragment fade-in">consistent naming</p>
 					<p class="fragment fade-in">write readable tests</p>
-					<p class="fragment fade-in">mock everything</p>
+					<p class="fragment fade-in">mock everything (obviously not the class being tested)</p>
 					<p class="fragment fade-in">and write code that can be mocked</p>
 				</section>
 
@@ -166,11 +158,12 @@
 				<section>
 					<h4>why mockery?</h4>
 					<p class="fragment">can mock static methods, unlike Prophecy</p>
-					<p class="fragment">is easily integrated</p>
+					<p class="fragment">integrates easily with PHPUnit</p>
 				</section>
 
 				<section>
 					<h3>how we write unit tests</h3>
+
 					<section data-markdown>
 
 					<script type="text/template">
@@ -224,7 +217,6 @@
 
 					```
 					</script>
-
 					</section>
 				</section>
 
@@ -256,7 +248,7 @@
 
 			 	<section>
 			 		<h3>Why shippable?</h3>
-			 		<p class="fragment">cuz it's free for private repos</p>
+			 		<p class="fragment">it's free for private repo</p>
 			 		<p class="fragment">supports docker</p>
 			 		<p class="fragment">has unlimited builds</p>
 			 		<p class="fragment">a lot of other good features</p>
