@@ -1,361 +1,490 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-		<title>sbs</title>
+    <title>sbs</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h3>Automated tests with PHPunit is a puzzle.</h3>
-					<h3>Continuous integration is the missing piece</h3>
-					<p>
-						<!-- <small>created by <a href="https://github.com/sachit-singh">scht</a></small> -->
-					</p>
-				</section>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>Automated tests with PHPunit is a puzzle.</h3>
 
-				<section>
-					<h2>the puzzle</h2>
-				</section>
+            <h3>Continuous integration is the missing piece</h3>
 
-				<section>
-					<h3>Automated Unit Testing</h3>
-				</section>
+            <p>
+                <!-- <small>created by <a href="https://github.com/sachit-singh">scht</a></small> -->
+            </p>
+        </section>
 
-				<section id="fragments" style="text-align: right">
-					<h3 style="text-align: left;">the "What"</h3>
-					<p class="fragment"> - just code testing another code</p>
-					<p class="fragment"> -- means using an automation tool to execute your test suite</p>
-					<p class="fragment"> --- a process using software tools to execute pre-scripted tests on an application before releasing into production</p>
-				</section>
+        <section>
+            <h2>the puzzle</h2>
 
-				<section id="fragments" style="text-align: left;">
-					<h3 style="text-align: right">the "Why"</h3>
-					<p class="fragment"> - manual testing of all work flows, all scenarios and everything else is time and cost consuming</p>
-					<p class="fragment"> -- doesn't require human intervention</p>
-					<p class="fragment"> --- increases speed and accuracy of test execution</p>
-					<p class="fragment"> ---- a lot of code coverage </p>
-				</section>
+            <div style="width: 50%; height: 50%; margin-left: 240px;">
+                <img src="images/titaura.jpg" style="width: 75%; height: 75%;">
+            </div>
 
-				<section>
-					<h3>Types of tests - mainly</h3>
-					<section id="fragments">
-						<p class="fragment">
-							 Unit Tests <br/>
-	 					</p>
-						<p class="fragment">
-							 Functional Tests <br/>
-	 					</p>
-						<p class="fragment">
-							 Integration Tests <br/>
-	 					</p>
-					</section>
-				</section>
+            <p>
+                how are testing, CI and something like titaura related?
+            </p>
+        </section>
 
-				<section>
-					<h3>Unit Tests</h3>
-					<section id="fragments">
-						<p class="fragment">testing a small independent part of code </p>
-						<p class="fragment">database independent</p>
-						<p class="fragment">minimal or no file system dependence</p>
-						<p class="fragment">isolated</p>
-						<p class="fragment">deterministic</p>
-						<p class="fragment">so it is fast</p>
-					</section>
-				</section>
+        <section>
+            <h3>Automated Unit Testing</h3>
+        </section>
 
-				<section>
-					<h3>Why unit tests ?</h3>
-					<p class="fragment">find problems early in the dev cycle</p>
-					<p class="fragment">they facilitate change</p>
-					<p class="fragment">they are good documentations</p>
-					<p class="fragment">its fun..</p>
-				</section>
+        <section style="text-align: right">
+            <h3 style="text-align: left;">the "What"</h3>
 
-				<section>
-					<h3>how do we write unit tests?</h3>
-						<p class="fragment">
-							setup everything for testing
-						</p>
-						<p class="fragment">
-							mock dependencies
-						</p>
-						<p class="fragment">
-							trigger the method being tested
-						</p>
-						<p class="fragment">
-							verify the results, that they are correct
-						</p>
-				</section>
+            <p> - just code testing another code</p>
 
-				<section>
-					<h3>how to write good unit tests..??</h3>
-					<p class="fragment fade-in">structure is important</p>
-					<p class="fragment fade-in">consistent naming</p>
-					<p class="fragment fade-in">mock everything (obviously not the class being tested)</p>
-					<p class="fragment fade-in">and write code that can be mocked</p>
-					<p class="fragment fade-in">testable code</p>
-					<p class="fragment fade-in">readable tests</p>
-				</section>
+            <p> -- means using an automation tool to execute your test suite</p>
 
-				<section>
-					<h4>
-						lot of testing frameworks available....
-					</h4>
-				</section>
+            <p> --- a process using software tools to execute pre-scripted tests on an application before releasing into production</p>
+        </section>
 
-				<section>
-					<p>like..</p>
-					<p class="fragment">phpunit</p>
-					<p class="fragment">phpspec</p>
-					<p class="fragment">codeception</p>
-					<p class="fragment">simpletest</p>
-				</section>
+        <section style="text-align: left;">
+            <h3 style="text-align: right">the "Why"</h3>
 
-				<section>
-					<p>being the most popular and the de facto unit testing framework in PHP</p>
-					<p>
-						<img src="images/testStats.png">
-					</p>
-				</section>
+            <p> - manual testing of all work flows, all scenarios and everything else is time and cost consuming</p>
 
-				<section>
-					<h4 class="fragment">we chose phpunit</h4>
-				</section>
+            <p> -- doesn't require human intervention</p>
 
-				<section>
-					<h3>mockery</h3>
-					<p class="fragment">php mock object framework for mocking dependencies</p>
-					<p class="fragment">used to mock dependencies</p>
-				</section>
+            <p> --- increases speed and accuracy of test execution</p>
 
-				<section>
-					<h4>why mockery?</h4>
-					<p class="fragment">can mock static methods, unlike Prophecy</p>
-					<p class="fragment">integrates easily with PHPUnit</p>
-				</section>
+            <p> ---- a lot of code coverage </p>
+        </section>
 
-				<section>
-					<h3>how we write unit tests</h3>
+        <section>
+            <h3>Types of tests - mainly</h3>
+            <section>
+                <p>
+                    Unit Tests <br/>
+                </p>
 
-					<section data-markdown>
+                <p>
+                    Functional Tests <br/>
+                </p>
 
-					<script type="text/template">
-					```php
-					class ExampleClass
-					{
-						public function __construct(Dependency1 $dependency1)
-						{
-							$this->dependency1 = $dependancy1;
-						}
+                <p>
+                    Integration Tests <br/>
+                </p>
+            </section>
+        </section>
 
-						public function add($a, $b)
-						{
-							return $this->dependency1->add($a + $b);
-						}
-					}
-					```
-					</script>
-					</section>
+        <section>
+            <h3>Unit Tests</h3>
+            <section>
+                <p>testing a small independent part of code </p>
 
-					<section data-markdown>
-					<script type="text/template">
-					```php
-					use \Mockery as m;
+                <p>database independent</p>
 
-					class exampleTest
-					{
-						public function setup()
-						{
+                <p>minimal or no file system dependence</p>
 
-							parent::setUp();
+                <p>isolated</p>
 
-							$this->dependency1 = m::mock('dependency 1');
+                <p>deterministic</p>
 
-							$this->exampleClass = new ExampleClass($this->dependency1);
+                <p class="fragment">so it is fast</p>
+            </section>
+        </section>
 
-						}
+        <section>
+            <h3>Why unit tests ?</h3>
 
-						public function testItShouldAddTwoNumbers()
-						{
-							$this->dependency1->shouldReceive(add)->once()->with(1, 2)->andReturn(3);
-							$this->assertEquals(3, $this->exampleClass->add(1, 2));
-						}
+            <p>find problems early in the dev cycle</p>
 
-						public function tearDown()
-						{
-							parent::tearDown();
-							m::close();
-						}
-					}
+            <p>they facilitate change</p>
 
-					```
-					</script>
-					</section>
-				</section>
+            <p>they are good documentations</p>
 
-			 	<section>
-			 		<h3>the missing piece</h3>
-			 		<p class="fragment">Continuous Integration</p>
-			 		<br/>
-			 		<br/>
-			 		<p class="fragment">
-			 			a development practice that requires developers to integrate code several times a day
-		 			</p>
-		 			<p class="fragment">
-	 					each push is then verified by an automated build
-		 			</p>
-		 			<p class="fragment">
-		 				allowing teams to detect problems early
-		 			</p>
-		 			<p class="fragment">
-		 				the goal is to provide rapid feedback incase a defect is introduced
-		 			</p>
-			 	</section>
+            <p>its fun..</p>
+        </section>
 
-			 	<section>
-			 		<h4>lot of services</h4>
-			 		<p class="fragment">
-			 			<img class="logos" src="images/CIservices/travisCI.png">
-			 		</p>
-			 		<p class="fragment">
-			 			<img class="logos" src="images/CIservices/shippableCI.png">
-			 		</p>
-			 		<p class="fragment">
-			 			<img class="logos" src="images/CIservices/circleCI.png">
-			 		</p>
-			 		<p class="fragment">
-			 			<img class="logos" src="images/CIservices/codeShipCI.png">
-			 		</p>
-			 		<p class="fragment">
-			 			<img class="logos" src="images/CIservices/semaphoreCI.png">
-			 		</p>
-			 	</section>
+        <section>
+            <div>
+                <img src="images/bug.gif">
 
-			 	<section>
-			 		<h3>Why shippable?</h3>
-			 		<p class="fragment">it's free for private repo</p>
-			 		<p class="fragment">supports docker</p>
-			 		<p class="fragment">has unlimited builds</p>
-			 		<p class="fragment">a lot of other good features</p>
-			 	</section>
+                <p style="font-family: monospace; font-size: 14px;">source <a href="http://devopsreactions.tumblr.com/post/124056070020/when-a-bug-you-fixed-gets-re-introduced">http://devopsreactions.tumblr.com</a></p>
+            </div>
+        </section>
 
-			 	<section>
-			 		<h4>What does it do?</h4>
-			 		<p class="fragment">
-			 			runs a build everytime you anything
-			 		</p>
-			 		<p class="fragment">
-			 			sends you an email to notify the success/failure of the build
-			 			<img src="images/shippableEmail.png">
-			 		</p>
-			 	</section>
+        <section>
+            <p>Martin Fowler's <a href="http://martinfowler.com/bliki/TestPyramid.html">Test Pyramid</a></p>
 
-			 	<section>
-			 		<p>you can even set it to notify you on hipchat</p>
-			 		<img src="images/hipchatNotification.png">
-			 	</section>
+            <p>
+                <img style="background-color: white" src="images/testPyramid.png"/>
 
-			 	<section>
-			 		<h4>to do it</h4>
-			 		<strong><p class="fragment">shippable.yml</p></strong>
-			 		<p class="fragment"> - set a couple of configurations</p>
-			 		<p class="fragment"> - choose what to do and when</p>
-			 	</section>
+            <p style="font-family: monospace; font-size: 14px;">source: <a href="http://martinfowler.com/bliki/TestPyramid.html">http://martinfowler.com</a></p>
+            </p>
+        </section>
 
-			 	<section>
-			 		<img src="images/shippableYML.png">
-			 	</section>
+        <section>
+            <h3>how do we write unit tests?</h3>
 
-			 	<section>
-			 		<p>a Question..</p>
-			 		<p class="fragment">
-				 		how are testing and something like titaura related?
-			 		</p>
-			 		<p class="fragment">
-				 		<img src="images/titaura.jpg" style="width: 50%; height: 50%;">
-			 		</p>
-			 	</section>
+            <p>
+                setup everything for testing
+            </p>
 
-			 	<section>
-			 		<p class="fragment">your push turns out red...</p>
-			 		<p class="fragment">you go and buy titaura</p>
-			 	</section>
+            <p>
+                mock dependencies
+            </p>
 
-			 	<section>
-			 		<h4>culture</h4>
-			 		<p class="fragment">
-			 			<img src="images/automatedTests.png">
-			 		</p>
-			 	</section>
+            <p>
+                trigger the method being tested
+            </p>
 
-			 	<section>
-			 		<h4>thank you</h4>
-			 		<h4>questions?</h4>
-			 	</section>
+            <p>
+                verify the results, that they are correct
+            </p>
+        </section>
 
-			</div>
+        <section data-markdown>
+            <script type="text/template">
+                ```php
+                class ExampleClass extends someClass
+                {
+                    public function __construct(Dependency1 $dependency1)
+                    {
+                        $this->dependency1 = $dependancy1;
+                    }
 
-		</div>
+                    public function add($a, $b)
+                    {
+                        return $this->dependency1->add($a, $b);
+                    }
+                }
+                ```
+            </script>
+        </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <section data-markdown>
+            <script type="text/template">
+                ```php
+                use \Mockery as m;
 
-		<script>
+                class exampleTest extends someTestCase
+                {
+                    public function setup()
+                    {
+                        parent::setUp();
+                        $this->dependency1 = m::mock('dependency 1');
+                        $this->exampleClass = new ExampleClass($this->dependency1);
+                    }
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+                    public function tearDown()
+                    {
+                        parent::tearDown();
+                        m::close();
+                    }
+                }
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+                ```
+            </script>
+        </section>
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+        <section data-markdown>
+            <script type="text/template">
+                ```php
+                }
 
-		</script>
+                public function testItShouldAddTwoNumbers()
+                {
+                    $this->dependency1->shouldReceive(add)->once()->with(1, 2)->andReturn(3);
+                    $this->assertEquals(3, $this->exampleClass->add(1, 2));
+                }
 
-	</body>
+                public function tearDown()
+                ```
+            </script>
+        </section>
+
+        <section>
+            <p style="display: inline;">how do we write <h4 style="display: inline;">good</h4> unit tests..??</p>
+            <br/>
+
+            <p>structure is important</p>
+
+            <p>consistent naming</p>
+
+            <p>mock everything (obviously not the class being tested)</p>
+
+            <p>and write code that can be mocked</p>
+
+            <p class="fragment fade-in">testable code</p>
+
+            <p class="fragment fade-in">readable tests</p>
+        </section>
+
+        <section>
+            <p>test and verify only one specific part (single unit of work)</p>
+            <p class="fragment">self sufficiency</p>
+        </section>
+
+        <section>
+            <h4>
+                lot of testing frameworks available....
+            </h4>
+        </section>
+
+        <section>
+            <p>like..</p>
+
+            <p>phpunit</p>
+
+            <p>phpspec</p>
+
+            <p>codeception</p>
+
+            <p>simpletest</p>
+        </section>
+
+        <section>
+            <p>phpunit is the most popular and the de facto unit testing framework in PHP</p>
+
+            <p>
+                <img src="images/testStats.png">
+            </p>
+            <p style="font-family: monospace; font-size: 14px;">source
+                <a href="https://www.google.com/trends/explore#q=Phpunit%2C%20phpspec%2C%20codeception%2C%20simpletest">Google</a>
+            </p>
+        </section>
+
+        <section>
+            <p>green is good</p>
+            <p>
+                <img src="images/tests-green.png"/>
+            </p>
+        </section>
+
+        <section>
+            <p>red is not</p>
+            <p>
+                <img src="images/tests-red.png"/>
+            </p>
+        </section>
+
+        <section>
+            <h3>mockery</h3>
+            <p>php mock object framework for mocking dependencies</p>
+        </section>
+
+        <section>
+            <h4>why mockery?</h4>
+
+            <p>can mock static methods, unlike Prophecy</p>
+
+            <p>integrates easily with PHPUnit</p>
+        </section>
+
+        <section>
+            <h3>the missing piece</h3>
+
+            <p>Continuous Integration</p>
+            <br/>
+            <br/>
+
+            <p>
+                a development practice that requires developers to integrate code several times a day
+            </p>
+
+            <p class="fragment">
+                allowing teams to detect problems early
+            </p>
+
+            <p class="fragment">
+                each push is verified by an automated build
+            </p>
+
+            <p class="fragment">
+                the goal is to provide rapid feedback incase a defect is introduced
+            </p>
+        </section>
+
+        <section>
+            <p>
+                CI is important because....
+            </p>
+            <p class="fragment">
+                ensures on a continuous basis that you have a working product
+            </p>
+            <p class="fragment">
+                help detect bugs very early
+            </p>
+        </section>
+
+        <section>
+            <h4>lot of services</h4>
+
+            <p class="fragment">
+                <img class="logos" src="images/CIservices/travisCI.png">
+            </p>
+
+            <p class="fragment">
+                <img class="logos" src="images/CIservices/shippableCI.png">
+            </p>
+
+            <p class="fragment">
+                <img class="logos" src="images/CIservices/circleCI.png">
+            </p>
+
+            <p class="fragment">
+                <img class="logos" src="images/CIservices/codeShipCI.png">
+            </p>
+
+            <p class="fragment">
+                <img class="logos" src="images/CIservices/semaphoreCI.png">
+            </p>
+        </section>
+
+        <section>
+            <h3>Why shippable?</h3>
+
+            <p class="fragment">it's free for private repo</p>
+
+            <p class="fragment">supports docker</p>
+
+            <p class="fragment">has unlimited builds</p>
+
+            <p class="fragment">a lot of other good features</p>
+        </section>
+
+        <section>
+            <h4>What does it do?</h4>
+
+            <p>
+                pulls changes from your repo and runs a build every time you push anything
+            </p>
+
+            <p>
+                notify you of the success/failure of the build
+            </p>
+
+            <p>you can even set it to notify you on hipchat</p>
+        </section>
+
+        <section>
+            <h4>to do it</h4>
+            <strong><p class="fragment">shippable.yml</p></strong>
+
+            <div class="fragment">
+                <p> - set up a couple of configurations</p>
+
+                <p> - choose what to do and when</p>
+            </div>
+        </section>
+
+        <section>
+            <img src="images/shippableYML.png">
+        </section>
+
+        <section>
+            <p class="fragment">your push turns out red...</p>
+
+            <p class="fragment">you go and buy titaura</p>
+
+            <h4 class="fragment">culture</h4>
+        </section>
+
+        <section>
+            <p>
+                <img src="images/automatedTests.png">
+            </p>
+            <p style="font-family: monospace; font-size: 14px;">source <a href="http://geshan.com.np/blog/2015/05/software-engineering-practices-in-nepal-infographics-part-4-includes-project-management/">geshan.com.np</a>
+        </section>
+
+        <section>
+            <h4 class="fragment">encourage</h4>
+            <h4 class="fragment">explore</h4>
+            <p class="fragment">...</p>
+            <h4 class="fragment">thank</h4>
+            <h4 class="fragment">help</h4>
+            <h4 class="fragment">incitement</h4>
+            <h4 class="fragment">advice</h4>
+        </section>
+
+        <section>
+            <img src="images/runTests.jpg"/>
+            <p class="fragment">thank you</p>
+        </section>
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
 </html>
