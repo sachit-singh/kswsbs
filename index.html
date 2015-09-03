@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -38,25 +39,26 @@
 <div class="reveal">
     <div class="slides">
         <section>
-            <h3>Automated tests with PHPunit is a puzzle.</h3>
+            <h2>Automated tests with PHPunit is a puzzle.</h2>
 
-            <h3>Continuous integration is the missing piece</h3>
+            <h2>Continuous integration is the missing piece</h2>
+            <br/>
 
-            <p>
-                <!-- <small>created by <a href="https://github.com/sachit-singh">scht</a></small> -->
+            <p class="me">
+                <a href="https://github.com/sachit-singh">sachit</a>
             </p>
+
         </section>
 
         <section>
-            <h2>the puzzle</h2>
-
-            <div style="width: 50%; height: 50%; margin-left: 240px;">
-                <img src="images/titaura.jpg" style="width: 75%; height: 75%;">
+            <div>
+                <div class="puzzle">
+                    <h2>the puzzle</h2>
+                </div>
+                <div class="titaura">
+                    <img src="images/titaura.jpg" style="width: 75%; height: 75%;">
+                </div>
             </div>
-
-            <p>
-                how are testing, CI and something like titaura related?
-            </p>
         </section>
 
         <section>
@@ -111,11 +113,11 @@
 
                 <p>minimal or no file system dependence</p>
 
-                <p>isolated</p>
+                <p class="fragment">isolated</p>
 
-                <p>deterministic</p>
+                <p class="fragment">deterministic</p>
 
-                <p class="fragment">so it is fast</p>
+                <p class="fragment" class="fragment">so it is fast</p>
             </section>
         </section>
 
@@ -145,8 +147,43 @@
             <p>
                 <img style="background-color: white" src="images/testPyramid.png"/>
 
-            <p style="font-family: monospace; font-size: 14px;">source: <a href="http://martinfowler.com/bliki/TestPyramid.html">http://martinfowler.com</a></p>
+            <p style="font-family: monospace; font-size: 14px;">source <a href="http://martinfowler.com/bliki/TestPyramid.html">http://martinfowler.com</a></p>
             </p>
+        </section>
+
+        <section>
+            <h3>how do we write unit tests?</h3>
+
+            <p>
+                setup everything for testing
+            </p>
+
+            <p class="fragment" style="color: red">
+                mock dependencies
+            </p>
+
+            <p class="fragment">??</p>
+
+            <!--<p>-->
+                <!--trigger the method being tested-->
+            <!--</p>-->
+
+            <!--<p>-->
+                <!--verify the results, that they are correct-->
+            <!--</p>-->
+        </section>
+
+        <section>
+            <h3>mockery</h3>
+            <p>php mock object framework for mocking dependencies</p>
+        </section>
+
+        <section>
+            <h4>why mockery?</h4>
+
+            <p>can mock static methods, unlike Prophecy</p>
+
+            <p>integrates easily with PHPUnit</p>
         </section>
 
         <section>
@@ -160,12 +197,12 @@
                 mock dependencies
             </p>
 
-            <p>
-                trigger the method being tested
+            <p class="fragment">
+            trigger the method being tested
             </p>
 
-            <p>
-                verify the results, that they are correct
+            <p class="fragment">
+            verify the results, that they are correct
             </p>
         </section>
 
@@ -174,14 +211,16 @@
                 ```php
                 class ExampleClass extends someClass
                 {
-                    public function __construct(Dependency1 $dependency1)
+                    protected $person;
+
+                    public function __construct(Person $person)
                     {
-                        $this->dependency1 = $dependancy1;
+                        $this->person = $person;
                     }
 
-                    public function add($a, $b)
+                    public function create(array $details)
                     {
-                        return $this->dependency1->add($a, $b);
+                        return $this->person->create($details);
                     }
                 }
                 ```
@@ -191,15 +230,14 @@
         <section data-markdown>
             <script type="text/template">
                 ```php
-                use \Mockery as m;
-
                 class exampleTest extends someTestCase
                 {
+                    protected $person;
                     public function setup()
                     {
                         parent::setUp();
-                        $this->dependency1 = m::mock('dependency 1');
-                        $this->exampleClass = new ExampleClass($this->dependency1);
+                        $this->person = \Mockery::mock('\Person');
+                        $this->exampleClass = new ExampleClass($this->person);
                     }
 
                     public function tearDown()
@@ -216,12 +254,18 @@
         <section data-markdown>
             <script type="text/template">
                 ```php
-                }
-
-                public function testItShouldAddTwoNumbers()
+                public function testItShouldCreateAPerson()
                 {
-                    $this->dependency1->shouldReceive(add)->once()->with(1, 2)->andReturn(3);
-                    $this->assertEquals(3, $this->exampleClass->add(1, 2));
+                    $this->person
+                              ->shouldReceive('create')
+                              ->once()
+                              ->with(['name' => 'HisName', 'age' => 30])
+                              ->andReturnSelf();
+
+                    $this->assertInstanceOf('\Person',
+                          $this->exampleClass->create(
+                              ['name' => 'HisName', 'age' => 30])
+                          );
                 }
 
                 public function tearDown()
@@ -237,7 +281,7 @@
 
             <p>consistent naming</p>
 
-            <p>mock everything (obviously not the class being tested)</p>
+            <p>mock everything you need</p>
 
             <p>and write code that can be mocked</p>
 
@@ -292,19 +336,6 @@
             <p>
                 <img src="images/tests-red.png"/>
             </p>
-        </section>
-
-        <section>
-            <h3>mockery</h3>
-            <p>php mock object framework for mocking dependencies</p>
-        </section>
-
-        <section>
-            <h4>why mockery?</h4>
-
-            <p>can mock static methods, unlike Prophecy</p>
-
-            <p>integrates easily with PHPUnit</p>
         </section>
 
         <section>
@@ -368,15 +399,15 @@
         </section>
 
         <section>
-            <h3>Why shippable?</h3>
+            <h3>Why <a href="https://app.shippable.com/">shippable</a>?</h3>
 
-            <p class="fragment">it's free for private repo</p>
+            <p>it's free for private repo</p>
 
-            <p class="fragment">supports docker</p>
+            <p>supports docker</p>
 
-            <p class="fragment">has unlimited builds</p>
+            <p>has unlimited builds</p>
 
-            <p class="fragment">a lot of other good features</p>
+            <p>a lot of other cool features</p>
         </section>
 
         <section>
@@ -420,7 +451,7 @@
             <p>
                 <img src="images/automatedTests.png">
             </p>
-            <p style="font-family: monospace; font-size: 14px;">source <a href="http://geshan.com.np/blog/2015/05/software-engineering-practices-in-nepal-infographics-part-4-includes-project-management/">geshan.com.np</a>
+            <p style="font-family: monospace; font-size: 14px;">source <a href="http://geshan.com.np/blog/2015/05/software-engineering-practices-in-nepal-infographics-part-4-includes-project-management/">http://geshan.com.np</a>
         </section>
 
         <section>
@@ -428,9 +459,9 @@
             <h4 class="fragment">explore</h4>
             <p class="fragment">...</p>
             <h4 class="fragment">thank</h4>
+            <p class="fragment">specially <a href="" class="fragment"><strong>geshan dai</strong></a></p>
             <h4 class="fragment">help</h4>
             <h4 class="fragment">incitement</h4>
-            <h4 class="fragment">advice</h4>
         </section>
 
         <section>
